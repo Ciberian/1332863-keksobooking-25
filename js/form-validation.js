@@ -76,12 +76,12 @@ timeout.addEventListener('change', () => {
   timein.value = timeout.value;
 });
 
-const HOUSING_TYPE = {
-  bungalow: 0,
-  flat: 1000,
-  hotel: 3000,
-  house: 5000,
-  palace: 10000,
+const MinPrice = {
+  BUNGALOW: 0,
+  FLAT: 1000,
+  HOTEL: 3000,
+  HOUSE: 5000,
+  PALACE: 10000,
 };
 
 noUiSlider.create(sliderElement, {
@@ -100,7 +100,7 @@ noUiSlider.create(sliderElement, {
 
 types.addEventListener('change', () => {
   const chosenType = types.querySelector('option:checked');
-  const minPrice = HOUSING_TYPE[chosenType.value];
+  const minPrice = MinPrice[chosenType.value.toUpperCase()];
 
   price.min = minPrice;
   price.placeholder = minPrice;
@@ -117,14 +117,14 @@ price.addEventListener('input', () => {
 const validatePrice = (value) => {
   const chosenType = types.querySelector('option:checked');
 
-  return value <= MAXIMUM_PRICE && value >= HOUSING_TYPE[chosenType.value];
+  return value <= MAXIMUM_PRICE && value >= MinPrice[chosenType.value.toUpperCase()];
 };
 
 const priceErrorMessage = (value) => {
   const chosenType = types.querySelector('option:checked');
 
   if (value <= MAXIMUM_PRICE) {
-    return `Минимальная цена для данного жилья - ${HOUSING_TYPE[chosenType.value]} руб.`;
+    return `Минимальная цена для данного жилья - ${MinPrice[chosenType.value.toUpperCase()]} руб.`;
   }
 };
 

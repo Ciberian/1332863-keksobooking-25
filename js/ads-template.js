@@ -1,11 +1,11 @@
 import { pluralizeRus } from './pluralize-rus.js';
 
-const offerType = {
-  palace: 'Дворец',
-  flat: 'Квартира',
-  house: 'Дом',
-  bungalow: 'Бунгало',
-  hotel: 'Отель',
+const OfferType = {
+  PALACE: 'Дворец',
+  FLAT: 'Квартира',
+  HOUSE: 'Дом',
+  BUNGALOW: 'Бунгало',
+  HOTEL: 'Отель',
 };
 
 const insertData = (node, data, prop = 'textContent') => {
@@ -86,7 +86,7 @@ const createSimilarAd = (adData) => {
   insertData(titleNode, title);
   insertData(addressNode, address);
   insertData(priceNode, `${price} ₽/ночь`);
-  insertData(typeNode, offerType[type]);
+  insertData(typeNode, OfferType[type.toUpperCase()]);
   insertData(descriptionNode, description);
   insertCapacityData(capacity, rooms, guests);
   insertTimeData(time, checkin, checkout);
