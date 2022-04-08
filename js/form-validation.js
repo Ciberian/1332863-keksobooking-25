@@ -147,7 +147,7 @@ const validateCapacity = () => {
   }
 };
 
-const capacityErrorMessage = () => {
+const warnOfWrongCapacity = () => {
   const roomsCount = rooms.querySelector('option:checked');
   const guestsCount = capacity.querySelector('option:checked');
 
@@ -162,7 +162,7 @@ const capacityErrorMessage = () => {
   return 'Количество гостей не должно превышать количество комнат';
 };
 
-pristine.addValidator(capacity, validateCapacity, capacityErrorMessage);
+pristine.addValidator(capacity, validateCapacity, warnOfWrongCapacity);
 
 const successMessage = document.querySelector('#success').content.querySelector('.success');
 const errorMessage = document.querySelector('#error').content.querySelector('.error');
